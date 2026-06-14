@@ -86,16 +86,18 @@ Le seed crée :
 - [x] Middleware de protection des routes
 - [x] Tests automatisés (unitaires + smoke DB)
 - [x] Sécurité API : un commercial ne peut pas créer visite/commande sur le client d'un autre
+- [x] Gestion et suivi des ventes en temps réel
+- [x] Filtrage dynamique et avancé des données de ventes
+- [x] Importation et Exportation des données aux formats CSV et Excel (.xlsx)
 
 ### Non implémenté / limites connues
 
 - [ ] Docker Compose — non livré (incompatibilité Docker Desktop / Windows sur la machine de développement ; le projet se lance via les commandes npm ci-dessus)
 - [ ] Déploiement en ligne (bonus)
 - [ ] Upload photos visite (bonus)
-- [ ] Import/export CSV (bonus)
 - [ ] Géolocalisation GPS (bonus)
 - [ ] Récupération mot de passe par email
-- [ ] Recherche/filtres sur visites et commandes
+
 
 ## Structure du projet
 
