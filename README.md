@@ -1,6 +1,6 @@
 # SalesTrack
 
-Application web de pilotage commercial terrain — test technique Qarizmi 2026.
+Application web de pilotage commercial terrain 
 
 SalesTrack centralise la gestion des clients, visites commerciales, commandes/devis et indicateurs de performance pour un distributeur agro-alimentaire. Chaque rôle (Admin, Manager, Commercial) accède uniquement à son périmètre de données.
 
@@ -25,17 +25,14 @@ SalesTrack centralise la gestion des clients, visites commerciales, commandes/de
 # 1. Cloner le dépôt et installer les dépendances
 npm install
 
-# 2. Configurer les variables d'environnement
-cp .env.example .env
-# Éditer .env si besoin (valeurs par défaut fonctionnelles en local)
 
-# 3. Créer la base et appliquer le schéma
+# 2. Créer la base et appliquer le schéma
 npx prisma migrate dev
 
-# 4. Insérer les données de démonstration
+# 3. Insérer les données de démonstration
 npm run seed
 
-# 5. Lancer l'application
+# 4. Lancer l'application
 npm run dev
 ```
 
@@ -142,8 +139,7 @@ npm run build      # build production (webpack, compatible Windows)
 
 Résultats vérifiés localement : **6/6 unitaires OK**, **11/11 smoke OK**, **build OK**.
 
-- **Cursor (Claude)** — génération et itération du code, structure du projet, pages UI, API routes, seed, README
-- **Vérification manuelle** — test des 3 rôles, parcours mobile (nouvelle visite), contrôle du filtrage des données par rôle, relecture du code généré
+
 
 ## Hypothèses prises
 
@@ -152,6 +148,4 @@ Résultats vérifiés localement : **6/6 unitaires OK**, **11/11 smoke OK**, **b
 - Les commerciaux nouvellement inscrits sont rattachés au premier Manager trouvé en base
 - Pas de service email externe (pas de reset password)
 
-## Auteur
 
-Test technique individuel — Qarizmi 2026.
