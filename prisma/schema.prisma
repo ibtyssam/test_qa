@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      String
+  managerId Int?
+  manager   User?    @relation("ManagerTeam", fields: [managerId], references: [id])
+  team      User[]   @relation("ManagerTeam")
+  clients   Client[]
+  visits    Visit[]
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Client {
+  id           Int      @id @default(autoincrement())
+  code         String   @unique
+  name         String
+  city         String
+  channel      String
+  category     String
+  status       String   @default("actif")
+  commercialId Int
+  commercial   User     @relation(fields: [commercialId], references: [id])
+  visits       Visit[]
+  orders       Order[]
+  createdAt    DateTime @default(now())
+}
+
+model Visit {
+  id            Int      @id @default(autoincrement())
+  clientId      Int
+  client        Client   @relation(fields: [clientId], references: [id])
+  commercialId  Int
+  commercial    User     @relation(fields: [commercialId], references: [id])
+  date          DateTime @default(now())
+  object        String
+  comment       String?
+  status        String
+  noOrderReason String?
+  createdAt     DateTime @default(now())
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  clientId     Int
+  client       Client      @relation(fields: [clientId], references: [id])
+  commercialId Int
+  commercial   User        @relation(fields: [commercialId], references: [id])
+  type         String
+  status       String      @default("en_attente")
+  total        Float       @default(0)
+  lines        OrderLine[]
+  createdAt    DateTime    @default(now())
+}
+
+model OrderLine {
+  id          Int    @id @default(autoincrement())
+  orderId     Int
+  order       Order  @relation(fields: [orderId], references: [id])
+  designation String
+  quantity    Int
+  unitPrice   Float
+  total       Float
+}
